@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ECommerceApp.Domain.Common.Models
 {
-	class PagingParams
+	public class PagingParams
 	{
 	}
 }
