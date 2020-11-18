@@ -13,6 +13,7 @@ namespace ECommerceApp.Persistance
 		public DbSet<ProductDetails> ProductDetails { get; set; }
 		public DbSet<User> Users { get; set; }
 
+		// We will inject the configuration options in through the Api.Startup class.
 		public ECommerceContext(DbContextOptions<ECommerceContext> options) : base(options)
 		{
 		}
