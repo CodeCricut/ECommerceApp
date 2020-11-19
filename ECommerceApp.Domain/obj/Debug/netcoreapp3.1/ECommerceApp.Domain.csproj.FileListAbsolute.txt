@@ -3,7 +3,6 @@ C:\Users\ajori\source\repos\ECommerceApp\ECommerceApp.Domain\bin\Debug\netcoreap
 C:\Users\ajori\source\repos\ECommerceApp\ECommerceApp.Domain\bin\Debug\netcoreapp3.1\ECommerceApp.Domain.pdb
 C:\Users\ajori\source\repos\ECommerceApp\ECommerceApp.Domain\obj\Debug\netcoreapp3.1\ECommerceApp.Domain.AssemblyInfoInputs.cache
 C:\Users\ajori\source\repos\ECommerceApp\ECommerceApp.Domain\obj\Debug\netcoreapp3.1\ECommerceApp.Domain.AssemblyInfo.cs
-C:\Users\ajori\source\repos\ECommerceApp\ECommerceApp.Domain\obj\Debug\netcoreapp3.1\ECommerceApp.Domain.csproj.CoreCompileInputs.cache
 C:\Users\ajori\source\repos\ECommerceApp\ECommerceApp.Domain\obj\Debug\netcoreapp3.1\ECommerceApp.Domain.dll
 C:\Users\ajori\source\repos\ECommerceApp\ECommerceApp.Domain\obj\Debug\netcoreapp3.1\ECommerceApp.Domain.pdb
 C:\Users\ajori\source\repos\ECommerceApp\ECommerceApp.Domain\obj\Debug\netcoreapp3.1\ECommerceApp.Domain.csprojAssemblyReference.cache

@@ -14,7 +14,7 @@ namespace ECommerceApp.Domain.Common.Models
 		public int TotalCount { get; set; }
 		public int PageSize { get; set; }
 
-		// For deserialization
+		// For deserialization.
 		public PaginatedList()
 		{
 

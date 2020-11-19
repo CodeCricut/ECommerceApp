@@ -1,8 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "LLBF7SoiswKdqtRSFQLIDSgAIawkMPMr/5atKAhwDcLg9Ff/cxopnOjLCJcPfo3JRPB8Fs9ZIwk+BgzT+8InyQ==",
+  "dgSpecHash": "7SoElyCUhYKU7q81Bo9kCEXXSkLDAwPT+HeJBrRua9qTA/Y0ewFxg+evyQ4QjqDKLJy29qVFLMtuvozMpRyA7w==",
   "success": true,
   "projectFilePath": "C:\\Users\\ajori\\source\\repos\\ECommerceApp\\ECommerceApp.Domain\\ECommerceApp.Domain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\ajori\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\ajori\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",
+    "C:\\Users\\ajori\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\ajori\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\ajori\\.nuget\\packages\\microsoft.extensions.options\\3.0.0\\microsoft.extensions.options.3.0.0.nupkg.sha512",
+    "C:\\Users\\ajori\\.nuget\\packages\\microsoft.extensions.primitives\\3.0.0\\microsoft.extensions.primitives.3.0.0.nupkg.sha512",
+    "C:\\Users\\ajori\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512"
+  ],
   "logs": []
 }
