@@ -21,7 +21,10 @@ namespace ECommerceApp.Persistance.Configurations
 			builder.Property(pl => pl.QuantityAvailable).IsRequired();
 			
 			builder.Property(pl => pl.SellerId).IsRequired();
-			builder.HasOne(pl => pl.Seller).WithMany(seller => seller.Products);
+			builder
+				.HasOne(pl => pl.Seller)
+				.WithMany(seller => seller.Products)
+				.OnDelete(DeleteBehavior.NoAction);
 		}
 	}
 }
