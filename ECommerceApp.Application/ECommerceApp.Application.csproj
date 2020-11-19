@@ -4,4 +4,22 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="ProductDetailsCQs\CommonValidators\" />
+    <Folder Include="ProductListingCQs\Commands\RemoveProductListing\" />
+    <Folder Include="ProductListingCQs\CommonValidators\" />
+    <Folder Include="UserCQs\Commands\ModifyUser\" />
+    <Folder Include="UserCQs\Commands\RemoveUser\" />
+    <Folder Include="UserCQs\Commands\RegisterUser\" />
+    <Folder Include="UserCQs\CommonValidators\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ECommerceApp.Domain\ECommerceApp.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
