@@ -1,4 +1,5 @@
-﻿using ECommerceApp.Application.ProductListingCQs.Commands.AddProductListing;
+﻿using ECommerceApp.Api.Pipeline;
+using ECommerceApp.Application.ProductListingCQs.Commands.AddProductListing;
 using ECommerceApp.Application.ProductListingCQs.Commands.ModifyProductListing;
 using ECommerceApp.Application.ProductListingCQs.Commands.RemoveProductListing;
 using ECommerceApp.Application.ProductListingCQs.Queries.GetById.GetProductListingById;
@@ -17,18 +18,21 @@ namespace ECommerceApp.Api.Controllers
 	{
 		#region Commands
 		[HttpPost]
+		[JwtAuthorize]
 		public async Task<ActionResult<ProductListingQueryDto>> ListProductAsync([FromBody] ProductListingCommandDto listCommand)
 		{
 			return Ok(await Mediator.Send(new AddProductListingCommand(listCommand)));
 		}
 
 		[HttpPut]
+		[JwtAuthorize]
 		public async Task<ActionResult<ProductListingQueryDto>> ModifyProductListingAsync([FromBody] ProductListingCommandDto modifyCommand)
 		{
 			return Ok(await Mediator.Send(new ModifyProductListingCommand(modifyCommand)));
 		}
 
 		[HttpDelete("{key:int}")]
+		[JwtAuthorize]
 		public async Task<ActionResult<ProductListingQueryDto>> RemoveProductListingAsync([FromQuery] int key)
 		{
 			return Ok(await Mediator.Send(new RemoveProductListingCommand(key)));

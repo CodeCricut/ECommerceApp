@@ -1,4 +1,5 @@
-﻿using ECommerceApp.Application.Common.Interfaces;
+﻿using ECommerceApp.Api.Pipeline;
+using ECommerceApp.Application.Common.Interfaces;
 using ECommerceApp.Application.UserCQs.Commands.ModifyUser;
 using ECommerceApp.Application.UserCQs.Commands.RegisterUser;
 using ECommerceApp.Application.UserCQs.Commands.RemoveUser;
@@ -28,6 +29,7 @@ namespace ECommerceApp.Api.Controllers
 
 		#region Commands
 		[HttpPut]
+		[JwtAuthorize]
 		public async Task<ActionResult<UserQueryDto>> PutAsync([FromBody] UserCommandDto updateModel)
 		{
 			return Ok(await Mediator.Send(new ModifyUserCommand(updateModel)));
@@ -40,6 +42,7 @@ namespace ECommerceApp.Api.Controllers
 		}
 
 		[HttpDelete]
+		[JwtAuthorize]
 		public async Task<ActionResult<UserQueryDto>> DeleteAsync()
 		{
 			return Ok(await Mediator.Send(new RemoveCurrentUserCommand()));
@@ -48,6 +51,7 @@ namespace ECommerceApp.Api.Controllers
 
 		#region Queries
 		[HttpGet("me")]
+		[JwtAuthorize]
 		public async Task<ActionResult<UserQueryDto>> Me()
 		{
 			return Ok(await Mediator.Send(new GetAuthenticatedUserQuery()));

@@ -64,3 +64,10 @@ C:\Users\ajori\source\repos\ECommerceApp\ECommerceApp.Api\obj\Debug\netcoreapp3.
 C:\Users\ajori\source\repos\ECommerceApp\ECommerceApp.Api\obj\Debug\netcoreapp3.1\ECommerceApp.Api.genruntimeconfig.cache
 C:\Users\ajori\source\repos\ECommerceApp\ECommerceApp.Api\obj\Debug\netcoreapp3.1\ECommerceApp.Api.csproj.CoreCompileInputs.cache
 C:\Users\ajori\source\repos\ECommerceApp\ECommerceApp.Api\obj\Debug\netcoreapp3.1\ECommerceApp.Api.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\ajori\source\repos\ECommerceApp\ECommerceApp.Api\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\ajori\source\repos\ECommerceApp\ECommerceApp.Api\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\ajori\source\repos\ECommerceApp\ECommerceApp.Api\bin\Debug\netcoreapp3.1\FluentValidation.dll
+C:\Users\ajori\source\repos\ECommerceApp\ECommerceApp.Api\bin\Debug\netcoreapp3.1\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\ajori\source\repos\ECommerceApp\ECommerceApp.Api\bin\Debug\netcoreapp3.1\MediatR.dll
+C:\Users\ajori\source\repos\ECommerceApp\ECommerceApp.Api\bin\Debug\netcoreapp3.1\MediatR.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\ajori\source\repos\ECommerceApp\ECommerceApp.Api\bin\Debug\netcoreapp3.1\ECommerceApp.Application.dll

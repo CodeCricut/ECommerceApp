@@ -42,6 +42,13 @@ namespace ECommerceApp.Api
 
 			app.UseHttpsRedirection();
 
+			// Enable middleware to serve generated Swagger as a JSON endpoint.
+			app.UseSwagger();
+			app.UseSwaggerUI(c =>
+			{
+				c.SwaggerEndpoint($"/swagger/v1/swagger.json", "HackerNews API V1");
+			});
+
 			app.UseRouting();
 			app.UseCors("DefaultCorsPolicy");
 
