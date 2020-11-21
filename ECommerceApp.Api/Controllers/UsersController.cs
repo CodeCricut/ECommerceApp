@@ -76,7 +76,7 @@ namespace ECommerceApp.Api.Controllers
 			return await Mediator.Send(new GetUsersBySearchQuery(searchTerm, pagingParams));
 		}
 
-		[HttpGet("user/{username:string}")]
+		[HttpGet("user/{username}")]
 		public async Task<ActionResult<UserQueryDto>> GetUserAsync(string username)
 		{
 			return await Mediator.Send(new GetUserByUsernameQuery(username));

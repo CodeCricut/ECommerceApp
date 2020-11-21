@@ -11,5 +11,5 @@ C:\Users\ajori\source\repos\ECommerceApp\ECommerceApp.Persistance\obj\Debug\netc
 C:\Users\ajori\source\repos\ECommerceApp\ECommerceApp.Persistance\obj\Debug\netcoreapp3.1\ECommerceApp.Persistance.pdb
 C:\Users\ajori\source\repos\ECommerceApp\ECommerceApp.Persistance\bin\Debug\netcoreapp3.1\ECommerceApp.Persistance.runtimeconfig.json
 C:\Users\ajori\source\repos\ECommerceApp\ECommerceApp.Persistance\bin\Debug\netcoreapp3.1\ECommerceApp.Persistance.runtimeconfig.dev.json
-C:\Users\ajori\source\repos\ECommerceApp\ECommerceApp.Persistance\obj\Debug\netcoreapp3.1\ECommerceApp.Persistance.csproj.CoreCompileInputs.cache
 C:\Users\ajori\source\repos\ECommerceApp\ECommerceApp.Persistance\obj\Debug\netcoreapp3.1\ECommerceApp.Persistance.genruntimeconfig.cache
+C:\Users\ajori\source\repos\ECommerceApp\ECommerceApp.Persistance\obj\Debug\netcoreapp3.1\ECommerceApp.Persistance.csproj.CoreCompileInputs.cache

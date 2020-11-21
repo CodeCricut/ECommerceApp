@@ -28,7 +28,7 @@ namespace ECommerceApp.Persistance
 
 			services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-			//services.AddHttpContextAccessor();
+			services.AddHttpContextAccessor();
 
 			// I choose not to register the repositories manually, because they should really only be used in conjunction with IUnitOfWork
 
