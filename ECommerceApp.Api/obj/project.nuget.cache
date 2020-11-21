@@ -1,11 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "DPrA0IVgldwOaF+Bf94bqo0ElQ3lwdpJvlCWvqube7O2vZLpUf/N56mZIUXpONdfb2wZyLKuQnLyZpadQS8F9Q==",
+  "dgSpecHash": "M2Sjl+Pm+JPN5OzgiFoJQ+uwWKeQo2OcNeHBOJSfA+CcQgIu6M2MHxFSjTZaaWgXkKP2qpy8qfj5TtyOQsHHMg==",
   "success": true,
   "projectFilePath": "C:\\Users\\ajori\\source\\repos\\ECommerceApp\\ECommerceApp.Api\\ECommerceApp.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ajori\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\ajori\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",
+    "C:\\Users\\ajori\\.nuget\\packages\\fluentvalidation\\9.3.0\\fluentvalidation.9.3.0.nupkg.sha512",
+    "C:\\Users\\ajori\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\9.3.0\\fluentvalidation.dependencyinjectionextensions.9.3.0.nupkg.sha512",
+    "C:\\Users\\ajori\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
+    "C:\\Users\\ajori\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\9.0.0\\mediatr.extensions.microsoft.dependencyinjection.9.0.0.nupkg.sha512",
     "C:\\Users\\ajori\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\ajori\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "C:\\Users\\ajori\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

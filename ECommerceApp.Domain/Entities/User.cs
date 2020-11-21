@@ -1,10 +1,6 @@
 ﻿using ECommerceApp.Domain.Common;
 using ECommerceApp.Domain.Entities.JoinEntities;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ECommerceApp.Domain.Entities
 {

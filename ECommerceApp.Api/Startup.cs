@@ -1,18 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using ECommerceApp.Api.Pipeline;
+using ECommerceApp.Application;
 using ECommerceApp.Domain;
 using ECommerceApp.Persistance;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace ECommerceApp.Api
 {
@@ -30,6 +25,7 @@ namespace ECommerceApp.Api
 		{
 			services.AddDomain();
 			services.AddPersistance(Configuration);
+			services.AddApplication();
 			services.AddApi();
 		}
 
@@ -47,6 +43,9 @@ namespace ECommerceApp.Api
 			app.UseHttpsRedirection();
 
 			app.UseRouting();
+			app.UseCors("DefaultCorsPolicy");
+
+			app.UseApiExceptionHandler();
 
 			app.UseAuthorization();
 

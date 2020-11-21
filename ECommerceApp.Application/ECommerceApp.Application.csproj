@@ -6,16 +6,15 @@
 
   <ItemGroup>
     <Folder Include="ProductDetailsCQs\CommonValidators\" />
-    <Folder Include="ProductListingCQs\Commands\RemoveProductListing\" />
     <Folder Include="ProductListingCQs\CommonValidators\" />
-    <Folder Include="UserCQs\Commands\ModifyUser\" />
-    <Folder Include="UserCQs\Commands\RemoveUser\" />
-    <Folder Include="UserCQs\Commands\RegisterUser\" />
     <Folder Include="UserCQs\CommonValidators\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="9.3.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="9.3.0" />
     <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>

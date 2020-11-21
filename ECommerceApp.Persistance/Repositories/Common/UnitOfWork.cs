@@ -1,8 +1,6 @@
 ﻿using ECommerceApp.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ECommerceApp.Persistance.Repositories.Common
 {
