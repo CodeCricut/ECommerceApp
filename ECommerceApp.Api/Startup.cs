@@ -47,7 +47,7 @@ namespace ECommerceApp.Api
 
 			app.UseApiExceptionHandler();
 
-			app.UseAuthorization();
+			app.UseMiddleware<JwtMiddleware>();
 
 			app.UseEndpoints(endpoints =>
 			{

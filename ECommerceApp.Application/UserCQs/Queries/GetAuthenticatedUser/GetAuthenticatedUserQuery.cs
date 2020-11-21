@@ -12,12 +12,6 @@ namespace ECommerceApp.Application.UserCQs.Queries.GetAuthenticatedUser
 {
 	public class GetAuthenticatedUserQuery : IRequest<UserQueryDto>
 	{
-		public GetAuthenticatedUserQuery(UserCommandDto loginModel)
-		{
-			LoginModel = loginModel;
-		}
-
-		public UserCommandDto LoginModel { get; }
 	}
 
 	public class GetAuthenticatedUserHandler : DatabaseRequestHandler<

@@ -43,7 +43,7 @@ namespace ECommerceApp.Api.Controllers
 		}
 
 		[HttpGet("range")]
-		public async Task<ActionResult<ProductDetailsQueryDto>> GetAsync([FromQuery] IEnumerable<int> id, PagingParams pagingParams)
+		public async Task<ActionResult<PaginatedList<ProductDetailsQueryDto>>> GetAsync([FromQuery] IEnumerable<int> id, PagingParams pagingParams)
 		{
 			return Ok(await Mediator.Send(new GetProductDetailsByIdsQuery(id, pagingParams)));
 		}

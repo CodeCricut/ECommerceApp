@@ -1,12 +1,10 @@
 ﻿using AutoMapper;
 using ECommerceApp.Application.Common.Interfaces;
 using ECommerceApp.Application.Common.Requests;
-using ECommerceApp.Domain.Common.Models;
 using ECommerceApp.Domain.Interfaces;
 using ECommerceApp.Domain.Models;
 using MediatR;
 using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 

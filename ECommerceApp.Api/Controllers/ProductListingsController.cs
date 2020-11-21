@@ -7,9 +7,7 @@ using ECommerceApp.Application.ProductListingCQs.Queries.GetBySearch;
 using ECommerceApp.Domain.Common.Models;
 using ECommerceApp.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ECommerceApp.Api.Controllers

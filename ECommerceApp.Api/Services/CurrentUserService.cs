@@ -1,7 +1,7 @@
-﻿using HackerNews.Application.Common.Interfaces;
+﻿using ECommerceApp.Application.Common.Interfaces;
 using Microsoft.AspNetCore.Http;
 
-namespace HackerNews.Web.Services
+namespace ECommerceApp.Api.Services
 {
 	class CurrentUserService : ICurrentUserService
 	{

@@ -10,13 +10,23 @@ using System.Threading.Tasks;
 
 namespace ECommerceApp.Application.ProductDetailsCQs.Queries.GetById
 {
-	public class GetProductDetailsByIdHandler : DatabaseRequestHandler<GetByIdQuery<ProductDetailsQueryDto>, ProductDetailsQueryDto>
+	public class GetProductDetailsByIdQuery : IRequest<ProductDetailsQueryDto>
+	{
+		public GetProductDetailsByIdQuery(int id)
+		{
+			Id = id;
+		}
+
+		public int Id { get; }
+	}
+
+	public class GetProductDetailsByIdHandler : DatabaseRequestHandler<GetProductDetailsByIdQuery, ProductDetailsQueryDto>
 	{
 		public GetProductDetailsByIdHandler(IUnitOfWork unitOfWork, IMediator mediator, IMapper mapper, ICurrentUserService currentUserService) : base(unitOfWork, mediator, mapper, currentUserService)
 		{
 		}
 
-		public override Task<ProductDetailsQueryDto> Handle(GetByIdQuery<ProductDetailsQueryDto> request, CancellationToken cancellationToken)
+		public override Task<ProductDetailsQueryDto> Handle(GetProductDetailsByIdQuery request, CancellationToken cancellationToken)
 		{
 			throw new NotImplementedException();
 		}

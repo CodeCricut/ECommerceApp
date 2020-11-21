@@ -1,5 +1,4 @@
 ﻿using ECommerceApp.Application.Common.Interfaces;
-using ECommerceApp.Application.Common.Requests;
 using ECommerceApp.Application.UserCQs.Commands.ModifyUser;
 using ECommerceApp.Application.UserCQs.Commands.RegisterUser;
 using ECommerceApp.Application.UserCQs.Commands.RemoveUser;
@@ -12,9 +11,7 @@ using ECommerceApp.Application.UserCQs.Queries.GetByUsernames;
 using ECommerceApp.Domain.Common.Models;
 using ECommerceApp.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ECommerceApp.Api.Controllers
