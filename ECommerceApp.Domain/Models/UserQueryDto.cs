@@ -11,11 +11,13 @@ namespace ECommerceApp.Domain.Models
 	{
 		public int Id { get; set; }
 		public string Bio { get; set; }
-		public IEnumerable<ProductListing> Products { get; set; }
-		public IEnumerable<UserProductListing_Shopping> ShoppingCartItems { get; set; }
-		public IEnumerable<UserProductListing_Saved> Saved { get; set; }
-		public IEnumerable<ProductDetails> Bought { get; set; }
-		public IEnumerable<ProductDetails> Sold { get; set; }
+		public string Username { get; set; }
+
+		public IEnumerable<ProductListing> Products { get; set; } = new List<ProductListing>();
+		public IEnumerable<UserProductListing_Shopping> ShoppingCartItems { get; set; } = new List<UserProductListing_Shopping>();
+		public IEnumerable<UserProductListing_Saved> Saved { get; set; } = new List<UserProductListing_Saved>();
+		public IEnumerable<ProductDetails> Bought { get; set; } = new List<ProductDetails>();
+		public IEnumerable<ProductDetails> Sold { get; set; } = new List<ProductDetails>();
 		public bool Deleted { get; set; }
 
 		public void Mapping(Profile profile)
