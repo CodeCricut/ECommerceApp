@@ -12,12 +12,12 @@ namespace ECommerceApp.Application.ProductDetailsCQs.Commands.ReturnProduct
 {
 	public class ReturnProductCommand : IRequest<ProductDetailsQueryDto>
 	{
-		public ReturnProductCommand(int productListingId)
+		public ReturnProductCommand(ProductDetailsCommandDto returnCommand)
 		{
-			ProductListingId = productListingId;
+			ReturnCommand = returnCommand;
 		}
 
-		public int ProductListingId { get; }
+		public ProductDetailsCommandDto ReturnCommand { get; }
 	}
 
 	public class ReturnProductHandler : DatabaseRequestHandler<
