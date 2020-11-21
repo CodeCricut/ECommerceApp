@@ -12,8 +12,8 @@ namespace ECommerceApp.Domain.Entities
 		public string Description { get; set; }
 		public User Seller { get; set; }
 		public int SellerId { get; set; }
-		public IEnumerable<UserProductListing_Shopping> UsersShopping { get; set; }
-		public IEnumerable<UserProductListing_Saved> UsersSaved { get; set; }
+		public IEnumerable<UserProductListing_Shopping> UsersShopping { get; set; } = new List<UserProductListing_Shopping>();
+		public IEnumerable<UserProductListing_Saved> UsersSaved { get; set; } = new List<UserProductListing_Saved>();
 		public string Brand { get; set; }
 		public decimal Price { get; set; }
 		public DateTime ListedAt { get; set; }
