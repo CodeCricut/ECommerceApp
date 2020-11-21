@@ -1,4 +1,5 @@
-﻿using ECommerceApp.Application.ProductDetailsCQs.Commands.BuyProduct;
+﻿using ECommerceApp.Api.Pipeline;
+using ECommerceApp.Application.ProductDetailsCQs.Commands.BuyProduct;
 using ECommerceApp.Application.ProductDetailsCQs.Commands.ModifyProductDetails;
 using ECommerceApp.Application.ProductDetailsCQs.Commands.ReturnProduct;
 using ECommerceApp.Application.ProductDetailsCQs.Queries.GetById;
@@ -16,6 +17,7 @@ namespace ECommerceApp.Api.Controllers
 	{
 		#region Commands
 		[HttpPost("buy")]
+		[JwtAuthorize]
 		public async Task<ActionResult<ProductDetailsQueryDto>> BuyProductAsync([FromBody] ProductDetailsCommandDto buyCommand)
 		{
 			return Ok(await Mediator.Send(new BuyProductCommand(buyCommand)));
