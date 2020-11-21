@@ -11,16 +11,28 @@ using System.Threading.Tasks;
 
 namespace ECommerceApp.Application.ProductListingCQs.Queries.GetBySearch
 {
-	public class GetProductListingsBySearchQueryHandler : DatabaseRequestHandler<
-		GetBySearchQuery<PaginatedList<ProductListingQueryDto>>,
+	public class GetProductListingsBySearchQuery : IRequest<PaginatedList<ProductListingQueryDto>>
+	{
+		public GetProductListingsBySearchQuery(string searchTerm, PagingParams pagingParams)
+		{
+			SearchTerm = searchTerm;
+			PagingParams = pagingParams;
+		}
+
+		public string SearchTerm { get; }
+		public PagingParams PagingParams { get; }
+	}
+
+	public class GetProductListingsBySearchHandler : DatabaseRequestHandler<
+		GetProductListingsBySearchQuery,
 		PaginatedList<ProductListingQueryDto>
 		>
 	{
-		public GetProductListingsBySearchQueryHandler(IUnitOfWork unitOfWork, IMediator mediator, IMapper mapper, ICurrentUserService currentUserService) : base(unitOfWork, mediator, mapper, currentUserService)
+		public GetProductListingsBySearchHandler(IUnitOfWork unitOfWork, IMediator mediator, IMapper mapper, ICurrentUserService currentUserService) : base(unitOfWork, mediator, mapper, currentUserService)
 		{
 		}
 
-		public override Task<PaginatedList<ProductListingQueryDto>> Handle(GetBySearchQuery<PaginatedList<ProductListingQueryDto>> request, CancellationToken cancellationToken)
+		public override Task<PaginatedList<ProductListingQueryDto>> Handle(GetProductListingsBySearchQuery request, CancellationToken cancellationToken)
 		{
 			throw new NotImplementedException();
 		}

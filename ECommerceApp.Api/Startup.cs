@@ -26,7 +26,7 @@ namespace ECommerceApp.Api
 			services.AddDomain();
 			services.AddPersistance(Configuration);
 			services.AddApplication();
-			services.AddApi();
+			services.AddApi(Configuration);
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

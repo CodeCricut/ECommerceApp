@@ -10,8 +10,18 @@ using System.Threading.Tasks;
 
 namespace ECommerceApp.Application.UserCQs.Queries.GetById
 {
+	public class GetUserByIdQuery : IRequest<UserQueryDto>
+	{
+		public GetUserByIdQuery(int id)
+		{
+			Id = id;
+		}
+
+		public int Id { get; }
+	}
+
 	public class GetUserByIdQueryHandler : DatabaseRequestHandler<
-		GetByIdQuery<UserQueryDto>,
+		GetUserByIdQuery,
 		UserQueryDto
 		>
 	{
@@ -19,7 +29,7 @@ namespace ECommerceApp.Application.UserCQs.Queries.GetById
 		{
 		}
 
-		public override Task<UserQueryDto> Handle(GetByIdQuery<UserQueryDto> request, CancellationToken cancellationToken)
+		public override Task<UserQueryDto> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
 		{
 			throw new NotImplementedException();
 		}

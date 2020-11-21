@@ -6,13 +6,26 @@ using ECommerceApp.Domain.Interfaces;
 using ECommerceApp.Domain.Models;
 using MediatR;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace ECommerceApp.Application.UserCQs.Queries.GetByIds
 {
+	public class GetUsersByIdsQuery : IRequest<PaginatedList<UserQueryDto>>
+	{
+		public GetUsersByIdsQuery(IEnumerable<int> ids, PagingParams pagingParams)
+		{
+			Ids = ids;
+			PagingParams = pagingParams;
+		}
+
+		public IEnumerable<int> Ids { get; }
+		public PagingParams PagingParams { get; }
+	}
+
 	public class GetUserByIdsQueryHandler : DatabaseRequestHandler<
-		GetByIdQuery<PaginatedList<UserQueryDto>>,
+		GetUsersByIdsQuery,
 		PaginatedList<UserQueryDto>
 		>
 	{
@@ -20,7 +33,7 @@ namespace ECommerceApp.Application.UserCQs.Queries.GetByIds
 		{
 		}
 
-		public override Task<PaginatedList<UserQueryDto>> Handle(GetByIdQuery<PaginatedList<UserQueryDto>> request, CancellationToken cancellationToken)
+		public override Task<PaginatedList<UserQueryDto>> Handle(GetUsersByIdsQuery request, CancellationToken cancellationToken)
 		{
 			throw new NotImplementedException();
 		}

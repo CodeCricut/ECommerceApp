@@ -14,12 +14,14 @@ namespace ECommerceApp.Application.UserCQs.Queries.GetByUsernames
 {
 	public class GetUsersByUsernamesQuery : IRequest<PaginatedList<UserQueryDto>>
 	{
-		public GetUsersByUsernamesQuery(IEnumerable<string> usernames)
+		public GetUsersByUsernamesQuery(IEnumerable<string> usernames, PagingParams pagingParams)
 		{
 			Usernames = usernames;
+			PagingParams = pagingParams;
 		}
 
 		public IEnumerable<string> Usernames { get; }
+		public PagingParams PagingParams { get; }
 	}
 
 	public class GetUsersByUsernamesHandler : DatabaseRequestHandler<

@@ -10,25 +10,19 @@ using System.Threading.Tasks;
 
 namespace ECommerceApp.Application.UserCQs.Commands.RemoveUser
 {
-	public class RemoveUserCommand : IRequest<UserQueryDto>
+	public class RemoveCurrentUserCommand : IRequest<UserQueryDto>
 	{
-		public RemoveUserCommand(int userId)
-		{
-			UserId = userId;
-		}
-
-		public int UserId { get; }
 	}
 
 	public class RemoveUserHandler : DatabaseRequestHandler<
-		RemoveUserCommand,
+		RemoveCurrentUserCommand,
 		UserQueryDto>
 	{
 		public RemoveUserHandler(IUnitOfWork unitOfWork, IMediator mediator, IMapper mapper, ICurrentUserService currentUserService) : base(unitOfWork, mediator, mapper, currentUserService)
 		{
 		}
 
-		public override Task<UserQueryDto> Handle(RemoveUserCommand request, CancellationToken cancellationToken)
+		public override Task<UserQueryDto> Handle(RemoveCurrentUserCommand request, CancellationToken cancellationToken)
 		{
 			throw new NotImplementedException();
 		}
