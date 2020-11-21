@@ -8,10 +8,10 @@ namespace ECommerceApp.Domain.Common.Mapping
 {
 	public static class MappingExtensions
 	{
-		public static Task<PaginatedList<TDestination>> PaginatedListAsync<TDestination>(this IQueryable<TDestination> queryable, PagingParams pagingParams)
+		public static Task<PaginatedList<TDestination>> ToPaginatedListAsync<TDestination>(this IQueryable<TDestination> queryable, PagingParams pagingParams)
 			=> PaginatedList<TDestination>.CreateAsync(queryable, pagingParams.PageNumber, pagingParams.PageSize);
 
-		public static Task<PaginatedList<TDestination>> ToMappedPagedListAsync<TSource, TDestination>(this PaginatedList<TSource> list, IMapper mapper)
+		public static Task<PaginatedList<TDestination>> ToMappedPaginatedListAsync<TSource, TDestination>(this PaginatedList<TSource> list, IMapper mapper)
 		{
 			return Task.Factory.StartNew(() =>
 			{

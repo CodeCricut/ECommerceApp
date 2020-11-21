@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "p10T9B3NoDyGcRHtx0cS1a/fWoTX0GfK9loXT07A8JDZtftx4zmskwZWAWtuB9NPADa8jxM2khKTRe9IPhxBPA==",
+  "dgSpecHash": "ZeQpH6QwskdFgwH6LH8jV+6FpSDT3BMRGUdXSfnFm3ehbHQVmeLG/w4sQ0mCPFC74hX7cXQxls2ZcDHe+s7IVQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\ajori\\source\\repos\\ECommerceApp\\Domain.UnitTests\\Domain.UnitTests.csproj",
   "expectedPackageFiles": [
@@ -59,6 +59,7 @@
     "C:\\Users\\ajori\\.nuget\\packages\\system.io.filesystem.primitives\\4.3.0\\system.io.filesystem.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\ajori\\.nuget\\packages\\system.linq\\4.3.0\\system.linq.4.3.0.nupkg.sha512",
     "C:\\Users\\ajori\\.nuget\\packages\\system.linq.expressions\\4.3.0\\system.linq.expressions.4.3.0.nupkg.sha512",
+    "C:\\Users\\ajori\\.nuget\\packages\\system.linq.queryable\\4.3.0\\system.linq.queryable.4.3.0.nupkg.sha512",
     "C:\\Users\\ajori\\.nuget\\packages\\system.net.http\\4.3.0\\system.net.http.4.3.0.nupkg.sha512",
     "C:\\Users\\ajori\\.nuget\\packages\\system.net.primitives\\4.3.0\\system.net.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\ajori\\.nuget\\packages\\system.net.sockets\\4.3.0\\system.net.sockets.4.3.0.nupkg.sha512",

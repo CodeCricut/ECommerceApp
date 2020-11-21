@@ -99,8 +99,8 @@ C:\Users\ajori\source\repos\ECommerceApp\Domain.UnitTests\bin\Debug\netcoreapp3.
 C:\Users\ajori\source\repos\ECommerceApp\Domain.UnitTests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
 C:\Users\ajori\source\repos\ECommerceApp\Domain.UnitTests\bin\Debug\netcoreapp3.1\ECommerceApp.Domain.dll
 C:\Users\ajori\source\repos\ECommerceApp\Domain.UnitTests\bin\Debug\netcoreapp3.1\ECommerceApp.Domain.pdb
-C:\Users\ajori\source\repos\ECommerceApp\Domain.UnitTests\obj\Debug\netcoreapp3.1\Domain.UnitTests.csproj.CoreCompileInputs.cache
 C:\Users\ajori\source\repos\ECommerceApp\Domain.UnitTests\obj\Debug\netcoreapp3.1\Domain.UnitTests.csproj.CopyComplete
 C:\Users\ajori\source\repos\ECommerceApp\Domain.UnitTests\obj\Debug\netcoreapp3.1\Domain.UnitTests.dll
 C:\Users\ajori\source\repos\ECommerceApp\Domain.UnitTests\obj\Debug\netcoreapp3.1\Domain.UnitTests.pdb
 C:\Users\ajori\source\repos\ECommerceApp\Domain.UnitTests\obj\Debug\netcoreapp3.1\Domain.UnitTests.genruntimeconfig.cache
+C:\Users\ajori\source\repos\ECommerceApp\Domain.UnitTests\obj\Debug\netcoreapp3.1\Domain.UnitTests.csproj.CoreCompileInputs.cache
