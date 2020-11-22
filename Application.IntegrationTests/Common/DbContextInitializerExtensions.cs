@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace Application.IntegrationTests
 {
 	public static class DbContextInitializerExtensions
-	{,
+	{
 		public static void InitializeForTests(this ECommerceContext context)
 		{
 			User user = new User

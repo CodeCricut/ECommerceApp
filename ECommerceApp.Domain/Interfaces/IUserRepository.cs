@@ -1,6 +1,8 @@
-﻿namespace ECommerceApp.Domain.Interfaces
+﻿using ECommerceApp.Domain.Entities;
+
+namespace ECommerceApp.Domain.Interfaces
 {
-	public interface IUserRepository
+	public interface IUserRepository : IEntityRepository<User>
 	{
 	}
 }

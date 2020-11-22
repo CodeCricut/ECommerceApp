@@ -12,6 +12,7 @@ using System;
 using System.Reflection;
 
 [assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("ECommerceApp.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\ajori\\source\\repos\\ECommerceApp\\ECommerceApp.Api", "ECommerceApp.Api.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("ECommerceApp.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\ajori\\source\\repos\\ECommerceApp\\ECommerceApp.Application", "ECommerceApp.Application.csproj", "0")]
 [assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("ECommerceApp.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\ajori\\source\\repos\\ECommerceApp\\ECommerceApp.Domain", "ECommerceApp.Domain.csproj", "0")]
 [assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("ECommerceApp.Persistance, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\ajori\\source\\repos\\ECommerceApp\\ECommerceApp.Persistance", "ECommerceApp.Persistance.csproj", "0")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("Application.IntegrationTests")]

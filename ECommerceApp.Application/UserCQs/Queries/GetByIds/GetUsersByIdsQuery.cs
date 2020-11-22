@@ -24,12 +24,12 @@ namespace ECommerceApp.Application.UserCQs.Queries.GetByIds
 		public PagingParams PagingParams { get; }
 	}
 
-	public class GetUserByIdsQueryHandler : DatabaseRequestHandler<
+	public class GetUsersByIdsHandler : DatabaseRequestHandler<
 		GetUsersByIdsQuery,
 		PaginatedList<UserQueryDto>
 		>
 	{
-		public GetUserByIdsQueryHandler(IUnitOfWork unitOfWork, IMediator mediator, IMapper mapper, ICurrentUserService currentUserService) : base(unitOfWork, mediator, mapper, currentUserService)
+		public GetUsersByIdsHandler(IUnitOfWork unitOfWork, IMediator mediator, IMapper mapper, ICurrentUserService currentUserService) : base(unitOfWork, mediator, mapper, currentUserService)
 		{
 		}
 

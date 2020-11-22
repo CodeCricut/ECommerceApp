@@ -20,12 +20,12 @@ namespace ECommerceApp.Application.UserCQs.Queries.GetById
 		public int Id { get; }
 	}
 
-	public class GetUserByIdQueryHandler : DatabaseRequestHandler<
+	public class GetUserByIdHandler : DatabaseRequestHandler<
 		GetUserByIdQuery,
 		UserQueryDto
 		>
 	{
-		public GetUserByIdQueryHandler(IUnitOfWork unitOfWork, IMediator mediator, IMapper mapper, ICurrentUserService currentUserService) : base(unitOfWork, mediator, mapper, currentUserService)
+		public GetUserByIdHandler(IUnitOfWork unitOfWork, IMediator mediator, IMapper mapper, ICurrentUserService currentUserService) : base(unitOfWork, mediator, mapper, currentUserService)
 		{
 		}
 
