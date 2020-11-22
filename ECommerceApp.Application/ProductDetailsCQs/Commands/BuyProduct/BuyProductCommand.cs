@@ -30,6 +30,10 @@ namespace ECommerceApp.Application.ProductDetailsCQs.Commands.BuyProduct
 
 		public override Task<ProductDetailsQueryDto> Handle(BuyProductCommand request, CancellationToken cancellationToken)
 		{
+			// TODO:
+			// should decrement the product listing number
+			// should create new product details and add it to the db
+			// should return details query dto
 			throw new NotImplementedException();
 		}
 	}

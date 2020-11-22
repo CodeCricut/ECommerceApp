@@ -29,9 +29,4 @@
     <ProjectReference Include="..\ECommerceApp.Persistance\ECommerceApp.Persistance.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ProductDetailsCQs\Commands\" />
-    <Folder Include="ProductDetailsCQs\Queries\" />
-  </ItemGroup>
-
 </Project>

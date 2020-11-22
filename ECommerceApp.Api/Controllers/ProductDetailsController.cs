@@ -24,11 +24,11 @@ namespace ECommerceApp.Api.Controllers
 		}
 
 		// Depending on what the modify command does, this endpoint may be unneccesary.
-		[HttpPost("modify")]
+		[HttpPost("modify/{key:int}")]
 		[JwtAuthorize]
-		public async Task<ActionResult<ProductDetailsQueryDto>> ModifyProductAsync([FromBody] ProductDetailsCommandDto modifyCommand)
+		public async Task<ActionResult<ProductDetailsQueryDto>> ModifyProductAsync([FromQuery] int key, [FromBody] ProductDetailsCommandDto modifyCommand)
 		{
-			return Ok(await Mediator.Send(new ModifyProductDetailsCommand(modifyCommand)));
+			return Ok(await Mediator.Send(new ModifyProductDetailsCommand(key, modifyCommand)));
 		}
 
 		[HttpPost("return")]
