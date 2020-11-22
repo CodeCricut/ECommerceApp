@@ -1,6 +1,8 @@
-﻿namespace ECommerceApp.Domain.Interfaces
+﻿using System;
+
+namespace ECommerceApp.Domain.Interfaces
 {
-	public interface IUnitOfWork
+	public interface IUnitOfWork : IDisposable
 	{
 		IProductDetailsRepository ProductDetails { get; }
 		IProductListingRepository ProductListings { get; }

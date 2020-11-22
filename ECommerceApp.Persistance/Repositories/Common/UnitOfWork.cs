@@ -6,20 +6,31 @@ namespace ECommerceApp.Persistance.Repositories.Common
 {
 	class UnitOfWork : IUnitOfWork
 	{
-		public IProductDetailsRepository ProductDetails => throw new NotImplementedException();
+		private readonly DbContext _db;
 
-		public IProductListingRepository ProductListings => throw new NotImplementedException();
+		public IProductDetailsRepository ProductDetails { get; private set; }
 
-		public IUserRepository Users => throw new NotImplementedException();
+		public IProductListingRepository ProductListings { get; private set; }
+
+		public IUserRepository Users { get; private set; }
 
 		public UnitOfWork(DbContext db)
 		{
+			_db = db;
 
+			ProductDetails = new ProductDetailsRepository(db);
+			ProductListings = new ProductListingRepository(db);
+			Users = new UserRepository(db);
 		}
 
 		public bool SaveChanges()
 		{
-			throw new NotImplementedException();
+			return _db.SaveChanges() > 0;
+		}
+
+		public void Dispose()
+		{
+			_db.Dispose();
 		}
 	}
 }

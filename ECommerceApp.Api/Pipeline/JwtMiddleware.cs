@@ -16,7 +16,7 @@ namespace ECommerceApp.Api.Pipeline
 	///
 	/// <list type="bullet">
 	///		<item>Validate the token</item>
-	///		<item> Extract the user id from the token</item>
+	///		<item>Extract the user id from the token</item>
 	///		<item>Attach the authenticated user to the current HttpContext.Items 
 	///		collection to make it accessible within the scope of the current request</item>
 	/// </list>
