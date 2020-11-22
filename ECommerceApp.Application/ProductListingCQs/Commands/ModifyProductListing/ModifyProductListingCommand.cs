@@ -12,11 +12,13 @@ namespace ECommerceApp.Application.ProductListingCQs.Commands.ModifyProductListi
 {
 	public class ModifyProductListingCommand : IRequest<ProductListingQueryDto>
 	{
-		public ModifyProductListingCommand(ProductListingCommandDto updateModel)
+		public ModifyProductListingCommand(int id, ProductListingCommandDto updateModel)
 		{
+			Id = id;
 			UpdateModel = updateModel;
 		}
 
+		public int Id { get; }
 		public ProductListingCommandDto UpdateModel { get; }
 	}
 

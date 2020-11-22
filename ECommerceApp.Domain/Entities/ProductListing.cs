@@ -7,6 +7,7 @@ namespace ECommerceApp.Domain.Entities
 {
 	public class ProductListing : DomainEntity
 	{
+		public bool Deleted { get; set; }
 		public string HumanReadableId { get; set; }
 		public string Name { get; set; }
 		public string Description { get; set; }

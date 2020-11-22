@@ -24,11 +24,11 @@ namespace ECommerceApp.Api.Controllers
 			return Ok(await Mediator.Send(new AddProductListingCommand(listCommand)));
 		}
 
-		[HttpPut]
+		[HttpPut("{key:int}")]
 		[JwtAuthorize]
-		public async Task<ActionResult<ProductListingQueryDto>> ModifyProductListingAsync([FromBody] ProductListingCommandDto modifyCommand)
+		public async Task<ActionResult<ProductListingQueryDto>> ModifyProductListingAsync([FromQuery] int key, [FromBody] ProductListingCommandDto modifyCommand)
 		{
-			return Ok(await Mediator.Send(new ModifyProductListingCommand(modifyCommand)));
+			return Ok(await Mediator.Send(new ModifyProductListingCommand(key, modifyCommand)));
 		}
 
 		[HttpDelete("{key:int}")]

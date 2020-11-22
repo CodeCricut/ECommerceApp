@@ -32,8 +32,6 @@
   <ItemGroup>
     <Folder Include="ProductDetailsCQs\Commands\" />
     <Folder Include="ProductDetailsCQs\Queries\" />
-    <Folder Include="ProductListingCQs\Commands\" />
-    <Folder Include="ProductListingCQs\Queries\" />
   </ItemGroup>
 
 </Project>
