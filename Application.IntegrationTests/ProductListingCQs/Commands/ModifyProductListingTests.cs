@@ -21,7 +21,7 @@ namespace Application.IntegrationTests.ProductListingCQs.Commands
 	public class ModifyProductListingTests : AppIntegrationTest
 	{
 		[Fact]
-		public async Task ShouldCreateValidProductListing()
+		public async Task ShouldUpdateValidProductListing()
 		{
 			// Arrange
 			using var scope = Factory.Services.CreateScope();
@@ -63,7 +63,6 @@ namespace Application.IntegrationTests.ProductListingCQs.Commands
 
 			Assert.Equal(updateCommand.Brand, plUpdatedEntity.Brand);
 			Assert.Equal(updateCommand.Description, plUpdatedEntity.Description);
-			Assert.Equal(updateCommand.HumanReadableId, plUpdatedEntity.HumanReadableId);
 			Assert.Equal(updateCommand.Name, plUpdatedEntity.Name);
 			Assert.Equal(updateCommand.Price, plUpdatedEntity.Price);
 			Assert.Equal(updateCommand.QuantityAvailable, plUpdatedEntity.QuantityAvailable);
