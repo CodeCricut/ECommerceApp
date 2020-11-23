@@ -4,6 +4,7 @@ using ECommerceApp.Domain.Common.Mapping;
 using ECommerceApp.Domain.Entities;
 using ECommerceApp.Domain.Entities.JoinEntities;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ECommerceApp.Domain.Models
 {
@@ -13,17 +14,22 @@ namespace ECommerceApp.Domain.Models
 		public string Bio { get; set; }
 		public string Username { get; set; }
 
-		public IEnumerable<ProductListing> Products { get; set; } = new List<ProductListing>();
-		public IEnumerable<UserProductListing_Shopping> ShoppingCartItems { get; set; } = new List<UserProductListing_Shopping>();
-		public IEnumerable<UserProductListing_Saved> Saved { get; set; } = new List<UserProductListing_Saved>();
-		public IEnumerable<ProductDetails> Bought { get; set; } = new List<ProductDetails>();
-		public IEnumerable<ProductDetails> Sold { get; set; } = new List<ProductDetails>();
+		public IEnumerable<int> Products { get; set; } = new List<int>();
+		public IEnumerable<int> ShoppingCartItems { get; set; } = new List<int>();
+		public IEnumerable<int> Saved { get; set; } = new List<int>();
+		public IEnumerable<int> Bought { get; set; } = new List<int>();
+		public IEnumerable<int> Sold { get; set; } = new List<int>();
 		public bool Deleted { get; set; }
 
 		public void Mapping(Profile profile)
 		{
-			// TODO: add actual mapping behavior.
-			profile.CreateMap<User, UserQueryDto>();
+			profile.CreateMap<User, UserQueryDto>()
+				.ForMember(model => model.Products, u => u.MapFrom(u => u.Products.Select(p => p.Id)))
+				.ForMember(model => model.ShoppingCartItems, u => u.MapFrom(u => u.ShoppingCartItems.Select(sci => sci.ProductListingId)))
+				.ForMember(model => model.Saved, u => u.MapFrom(u => u.Saved.Select(s => s.ProductListingId)))
+				.ForMember(model => model.Bought, u => u.MapFrom(u => u.Bought.Select(b => b.Id)))
+				.ForMember(model => model.Bought, u => u.MapFrom(u => u.Bought.Select(b => b.Id)))
+				.ForMember(model => model.Sold, u => u.MapFrom(u => u.Sold.Select(b => b.Id)));
 		}
 	}
 }

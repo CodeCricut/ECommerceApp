@@ -22,7 +22,6 @@ namespace ECommerceApp.Domain.Models
 
 		public void Mapping(Profile profile)
 		{
-			// TODO: add actual mapping behavior.
 			profile.CreateMap<ProductDetails, ProductDetailsQueryDto>();
 		}
 	}

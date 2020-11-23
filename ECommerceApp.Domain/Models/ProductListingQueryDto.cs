@@ -5,6 +5,7 @@ using ECommerceApp.Domain.Entities;
 using ECommerceApp.Domain.Entities.JoinEntities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ECommerceApp.Domain.Models
 {
@@ -15,8 +16,8 @@ namespace ECommerceApp.Domain.Models
 		public string Name { get; set; }
 		public string Description { get; set; }
 		public int SellerId { get; set; }
-		public IEnumerable<UserProductListing_Shopping> UsersShopping { get; set; } = new List<UserProductListing_Shopping>();
-		public IEnumerable<UserProductListing_Saved> UsersSaved { get; set; } = new List<UserProductListing_Saved>();
+		public IEnumerable<int> UsersShopping { get; set; } = new List<int>();
+		public IEnumerable<int> UsersSaved { get; set; } = new List<int>();
 		public string Brand { get; set; }
 		public decimal Price { get; set; }
 		public DateTime ListedAt { get; set; }
@@ -25,8 +26,9 @@ namespace ECommerceApp.Domain.Models
 
 		public void Mapping(Profile profile)
 		{
-			// TODO: add actual mapping behavior.
-			profile.CreateMap<ProductListing, ProductListingQueryDto>();
+			profile.CreateMap<ProductListing, ProductListingQueryDto>()
+				.ForMember(model => model.UsersShopping, u => u.MapFrom(u => u.UsersShopping.Select(us => us.UserId)))
+				.ForMember(model => model.UsersSaved, u => u.MapFrom(u => u.UsersSaved.Select(us => us.UserId)));
 		}
 	}
 }
