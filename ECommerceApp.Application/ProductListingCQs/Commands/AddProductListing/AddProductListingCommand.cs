@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using ECommerceApp.Application.Common.Interfaces;
 using ECommerceApp.Application.Common.Requests;
+using ECommerceApp.Domain.Entities;
+using ECommerceApp.Domain.Exceptions;
 using ECommerceApp.Domain.Interfaces;
 using ECommerceApp.Domain.Models;
 using MediatR;
@@ -28,9 +30,28 @@ namespace ECommerceApp.Application.ProductListingCQs.Commands.AddProductListing
 		{
 		}
 
-		public override Task<ProductListingQueryDto> Handle(AddProductListingCommand request, CancellationToken cancellationToken)
+		public override async Task<ProductListingQueryDto> Handle(AddProductListingCommand request, CancellationToken cancellationToken)
 		{
-			throw new NotImplementedException();
+			var response = new ProductListingQueryDto();
+			var user = await UnitOfWork.Users.GetEntityAsync(CurrentUserService.UserId);
+			if (user == null)
+			{
+				response.Errors.Add(new ErrorResponse(new UnauthorizedException()));
+			} else
+			{
+				var productListing = Mapper.Map<ProductListing>(request.Model);
+				productListing.Available = productListing.QuantityAvailable > 0;
+				productListing.Deleted = false;
+				productListing.ListedAt = DateTime.Now;
+				productListing.SellerId = user.Id;
+
+				await UnitOfWork.ProductListings.AddEntityAsync(productListing);
+				UnitOfWork.SaveChanges();
+
+				response = Mapper.Map<ProductListingQueryDto>(productListing);
+			}
+
+			return response;
 		}
 	}
 }
