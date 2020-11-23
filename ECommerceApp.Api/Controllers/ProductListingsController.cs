@@ -26,14 +26,14 @@ namespace ECommerceApp.Api.Controllers
 
 		[HttpPut("{key:int}")]
 		[JwtAuthorize]
-		public async Task<ActionResult<ProductListingQueryDto>> ModifyProductListingAsync([FromQuery] int key, [FromBody] ProductListingCommandDto modifyCommand)
+		public async Task<ActionResult<ProductListingQueryDto>> ModifyProductListingAsync([FromRoute] int key, [FromBody] ProductListingCommandDto modifyCommand)
 		{
 			return Ok(await Mediator.Send(new ModifyProductListingCommand(key, modifyCommand)));
 		}
 
 		[HttpDelete("{key:int}")]
 		[JwtAuthorize]
-		public async Task<ActionResult<ProductListingQueryDto>> RemoveProductListingAsync([FromQuery] int key)
+		public async Task<ActionResult<ProductListingQueryDto>> RemoveProductListingAsync([FromRoute] int key)
 		{
 			return Ok(await Mediator.Send(new RemoveProductListingCommand(key)));
 		}
@@ -41,7 +41,7 @@ namespace ECommerceApp.Api.Controllers
 
 		#region Queries
 		[HttpGet("{key:int}")]
-		public async Task<ActionResult<ProductListingQueryDto>> GetAsync([FromQuery] int key)
+		public async Task<ActionResult<ProductListingQueryDto>> GetAsync([FromRoute] int key)
 		{
 			return Ok(await Mediator.Send(new GetProductListingByIdQuery(key)));
 		}

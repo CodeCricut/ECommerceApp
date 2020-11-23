@@ -42,7 +42,7 @@ namespace Application.IntegrationTests.UserCQs.Commands
 			var sut = new ModifyUserHandler(unitOfWork, mediator, mapper, currentUserServiceMock.Object);
 
 			// Act
-			UserQueryDto updatedUserModel = await sut.Handle(new ModifyUserCommand(updateCommand), new System.Threading.CancellationToken());
+			UserQueryDto updatedUserModel = await sut.Handle(new ModifyUserCommand(user.Id, updateCommand), new System.Threading.CancellationToken());
 
 			// Assert
 			Assert.NotNull(updatedUserModel);
@@ -52,7 +52,7 @@ namespace Application.IntegrationTests.UserCQs.Commands
 			Assert.NotNull(updatedUserEntity);
 			Assert.Equal(updateCommand.Bio, updatedUserEntity.Bio);
 			Assert.Equal(updateCommand.Password, updatedUserEntity.Password);
-			Assert.Equal(updateCommand.Username, updatedUserEntity.Username);
+			// Assert.Equal(updateCommand.Username, updatedUserEntity.Username); DON'T SUPPORT CHANGING USERNAMES
 		}
 	}
 }

@@ -30,7 +30,7 @@ namespace ECommerceApp.Api.Services
 		public async Task<Jwt> GenererateJwtFromLoginModelAsync(UserCommandDto loginModel)
 		{
 			var user = await _mediator.Send(new GetUserFromLoginModelQuery(loginModel));
-			if (user == null) throw new NotFoundException();
+			if (user.Errors.Count > 0) throw new NotFoundException();
 
 			// generate token that is valid for 7 days
 			var tokenHandler = new JwtSecurityTokenHandler();

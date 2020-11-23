@@ -28,11 +28,11 @@ namespace ECommerceApp.Api.Controllers
 		}
 
 		#region Commands
-		[HttpPut]
+		[HttpPut("{key:int}")]
 		[JwtAuthorize]
-		public async Task<ActionResult<UserQueryDto>> PutAsync([FromBody] UserCommandDto updateModel)
+		public async Task<ActionResult<UserQueryDto>> PutAsync([FromRoute] int key, [FromBody] UserCommandDto updateModel)
 		{
-			return Ok(await Mediator.Send(new ModifyUserCommand(updateModel)));
+			return Ok(await Mediator.Send(new ModifyUserCommand(key, updateModel)));
 		}
 
 		[HttpPost("register")]
@@ -58,7 +58,7 @@ namespace ECommerceApp.Api.Controllers
 		}
 
 		[HttpGet("{key:int}")]
-		public async Task<ActionResult<UserQueryDto>> GetById(int key)
+		public async Task<ActionResult<UserQueryDto>> GetById([FromRoute] int key)
 		{
 			// probably a code smell but yolo.
 			return Ok(await Mediator.Send(new GetUserByIdQuery(key)));
