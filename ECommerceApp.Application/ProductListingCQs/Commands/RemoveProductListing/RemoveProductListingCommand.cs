@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ECommerceApp.Application.Common.Interfaces;
 using ECommerceApp.Application.Common.Requests;
+using ECommerceApp.Domain.Exceptions;
 using ECommerceApp.Domain.Interfaces;
 using ECommerceApp.Domain.Models;
 using MediatR;
@@ -28,9 +29,33 @@ namespace ECommerceApp.Application.ProductListingCQs.Commands.RemoveProductListi
 		{
 		}
 
-		public override Task<ProductListingQueryDto> Handle(RemoveProductListingCommand request, CancellationToken cancellationToken)
+		public override async Task<ProductListingQueryDto> Handle(RemoveProductListingCommand request, CancellationToken cancellationToken)
 		{
-			throw new NotImplementedException();
+			var response = new ProductListingQueryDto();
+			var user = await UnitOfWork.Users.GetEntityAsync(CurrentUserService.UserId);
+			var productListing = await UnitOfWork.ProductListings.GetEntityAsync(request.ProductListingId);
+
+			if (user == null)
+			{
+				response.Errors.Add(new ErrorResponse(new UnauthorizedException()));
+			}
+			else if (productListing == null)
+			{
+				response.Errors.Add(new ErrorResponse(new NotFoundException()));
+			} else
+			{
+				var successful = await UnitOfWork.ProductListings.DeleteEntityAsync(request.ProductListingId);
+				if (!successful)
+				{
+					response.Errors.Add(new ErrorResponse(new InvalidPostException()));
+				} else
+				{
+					UnitOfWork.SaveChanges();
+					response = Mapper.Map<ProductListingQueryDto>(productListing);
+				}
+			}
+
+			return response;
 		}
 	}
 }

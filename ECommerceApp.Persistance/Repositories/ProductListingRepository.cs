@@ -13,6 +13,21 @@ namespace ECommerceApp.Persistance.Repositories
 		{
 		}
 
+		public override async Task<bool> DeleteEntityAsync(int id)
+		{
+			try
+			{
+				var entity = await _context.Set<ProductListing>().FindAsync(id);
+				entity.Deleted = true;
+				await UpdateEntityAsync(id, entity);
+
+				return true;
+			}
+			catch
+			{
+				return false;
+			}
+		}
 
 		public override Task<IQueryable<ProductListing>> GetEntitiesAsync()
 		{
