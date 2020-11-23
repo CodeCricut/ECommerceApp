@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ECommerceApp.Application.Common.Interfaces;
 using ECommerceApp.Application.Common.Requests;
+using ECommerceApp.Domain.Exceptions;
 using ECommerceApp.Domain.Interfaces;
 using ECommerceApp.Domain.Models;
 using MediatR;
@@ -22,9 +23,29 @@ namespace ECommerceApp.Application.UserCQs.Commands.RemoveUser
 		{
 		}
 
-		public override Task<UserQueryDto> Handle(RemoveCurrentUserCommand request, CancellationToken cancellationToken)
+		public override async Task<UserQueryDto> Handle(RemoveCurrentUserCommand request, CancellationToken cancellationToken)
 		{
-			throw new NotImplementedException();
+			var user = await UnitOfWork.Users.GetEntityAsync(CurrentUserService.UserId);
+
+			var response = new UserQueryDto();
+			
+			if (user == null)
+			{
+				response.Errors.Add(new ErrorResponse(new UnauthorizedException()));
+			} else
+			{
+				try
+				{
+					await UnitOfWork.Users.DeleteEntityAsync(user.Id);
+					UnitOfWork.SaveChanges();
+					response = Mapper.Map<UserQueryDto>(user);
+				}
+				catch (Exception e)
+				{
+					response.Errors.Add(new ErrorResponse(e));
+				}
+			}
+			return response;
 		}
 	}
 }
