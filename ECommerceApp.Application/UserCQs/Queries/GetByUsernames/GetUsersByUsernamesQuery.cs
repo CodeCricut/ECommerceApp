@@ -1,12 +1,15 @@
 ﻿using AutoMapper;
 using ECommerceApp.Application.Common.Interfaces;
 using ECommerceApp.Application.Common.Requests;
+using ECommerceApp.Domain.Common.Mapping;
 using ECommerceApp.Domain.Common.Models;
+using ECommerceApp.Domain.Entities;
 using ECommerceApp.Domain.Interfaces;
 using ECommerceApp.Domain.Models;
 using MediatR;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -32,9 +35,13 @@ namespace ECommerceApp.Application.UserCQs.Queries.GetByUsernames
 		{
 		}
 
-		public override Task<PaginatedList<UserQueryDto>> Handle(GetUsersByUsernamesQuery request, CancellationToken cancellationToken)
+		public override async Task<PaginatedList<UserQueryDto>> Handle(GetUsersByUsernamesQuery request, CancellationToken cancellationToken)
 		{
-			throw new NotImplementedException();
+			var users = await UnitOfWork.Users.GetEntitiesAsync();
+			var paginatedUsersByUsernames = await users.Where(u => request.Usernames.Contains(u.Username)).ToPaginatedListAsync(request.PagingParams);
+			var paginatedResponse = await paginatedUsersByUsernames.ToMappedPaginatedListAsync<User, UserQueryDto>(Mapper);
+
+			return paginatedResponse;
 		}
 	}
 }
