@@ -1,11 +1,14 @@
 ﻿using AutoMapper;
 using ECommerceApp.Application.Common.Interfaces;
 using ECommerceApp.Application.Common.Requests;
+using ECommerceApp.Domain.Common.Mapping;
 using ECommerceApp.Domain.Common.Models;
+using ECommerceApp.Domain.Entities;
 using ECommerceApp.Domain.Interfaces;
 using ECommerceApp.Domain.Models;
 using MediatR;
 using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -32,9 +35,21 @@ namespace ECommerceApp.Application.UserCQs.Queries.GetBySearch
 		{
 		}
 
-		public override Task<PaginatedList<UserQueryDto>> Handle(GetUsersBySearchQuery request, CancellationToken cancellationToken)
+		public override async Task<PaginatedList<UserQueryDto>> Handle(GetUsersBySearchQuery request, CancellationToken cancellationToken)
 		{
-			throw new NotImplementedException();
+			var users = await UnitOfWork.Users.GetEntitiesAsync();
+			var usersBySearch = users.Where(u =>
+				u.Username.Contains(request.SearchTerm) ||
+				u.Bio.Contains(request.SearchTerm) ||
+				u.Products.Any(p =>
+					p.Brand.Contains(request.SearchTerm) ||
+					p.Description.Contains(request.SearchTerm) ||
+					p.Name.Contains(request.SearchTerm)
+					)
+				);
+
+			var paginatedUsers = await usersBySearch.ToPaginatedListAsync(request.PagingParams);
+			return await paginatedUsers.ToMappedPaginatedListAsync<User, UserQueryDto>(Mapper);
 		}
 	}
 }
