@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ECommerceApp.Application.Common.Interfaces;
 using ECommerceApp.Application.Common.Requests;
+using ECommerceApp.Domain.Exceptions;
 using ECommerceApp.Domain.Interfaces;
 using ECommerceApp.Domain.Models;
 using MediatR;
@@ -27,9 +28,21 @@ namespace ECommerceApp.Application.ProductListingCQs.Queries.GetById.GetProductL
 		{
 		}
 
-		public override Task<ProductListingQueryDto> Handle(GetProductListingByIdQuery request, CancellationToken cancellationToken)
+		public override async Task<ProductListingQueryDto> Handle(GetProductListingByIdQuery request, CancellationToken cancellationToken)
 		{
-			throw new NotImplementedException();
+			var productListing = await UnitOfWork.ProductListings.GetEntityAsync(request.Id);
+
+			var response = new ProductListingQueryDto();
+
+			if (productListing == null)
+			{
+				response.Errors.Add(new ErrorResponse(new NotFoundException()));
+			} else
+			{
+				response = Mapper.Map<ProductListingQueryDto>(productListing);
+			}
+
+			return response;
 		}
 	}
 }

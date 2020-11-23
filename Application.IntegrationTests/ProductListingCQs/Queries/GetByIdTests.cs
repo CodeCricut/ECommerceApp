@@ -69,15 +69,14 @@ namespace Application.IntegrationTests.ProductListingCQs.Queries
 			var sut = new GetProductListingByIdHandler(unitOfWork, mediator, mapper, currentUserServiceMock.Object);
 
 			// Act
-			ProductListingQueryDto responseModel = await sut.Handle(new GetProductListingByIdQuery(productListing.Id), new System.Threading.CancellationToken());
+			ProductListingQueryDto responseModel = await sut.Handle(new GetProductListingByIdQuery(-1), new System.Threading.CancellationToken());
 
 			// Assert
 			Assert.NotNull(responseModel);
 
 			Assert.NotEqual(productListing.Id, responseModel.Id);
 
-			var notFoundException = responseModel.Errors.FirstOrDefault(e => e.GetType() == typeof(NotFoundException));
-			Assert.NotNull(notFoundException);
+			Assert.True(0 < responseModel.Errors.Count());
 		}
 	}
 }
