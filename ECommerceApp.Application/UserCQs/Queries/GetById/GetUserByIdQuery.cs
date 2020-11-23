@@ -45,9 +45,20 @@ namespace ECommerceApp.Application.UserCQs.Queries.GetById
 				};
 			} else
 			{
-				response = Mapper.Map<UserQueryDto>(user);
+				if (user.Deleted)
+				{
+					return response;
+				} else
+				{
+					// TODO: this should probably be dealt with elsewhere.
+					response = Mapper.Map<UserQueryDto>(user);
+					response.Bought = null;
+					//response.Products = null;
+					response.Saved = null;
+					response.ShoppingCartItems = null;
+					//response.Sold = null;
+				}
 			}
-
 			return response;
 		}
 	}

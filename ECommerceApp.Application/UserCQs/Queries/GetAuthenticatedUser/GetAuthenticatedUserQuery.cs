@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ECommerceApp.Application.Common.Interfaces;
 using ECommerceApp.Application.Common.Requests;
+using ECommerceApp.Domain.Exceptions;
 using ECommerceApp.Domain.Interfaces;
 using ECommerceApp.Domain.Models;
 using MediatR;
@@ -22,9 +23,20 @@ namespace ECommerceApp.Application.UserCQs.Queries.GetAuthenticatedUser
 		{
 		}
 
-		public override Task<UserQueryDto> Handle(GetAuthenticatedUserQuery request, CancellationToken cancellationToken)
+		public override async Task<UserQueryDto> Handle(GetAuthenticatedUserQuery request, CancellationToken cancellationToken)
 		{
-			throw new NotImplementedException();
+			var currUser = await UnitOfWork.Users.GetEntityAsync(CurrentUserService.UserId);
+
+			var response = new UserQueryDto();
+
+			if (currUser == null)
+			{
+				response.Errors.Add(new ErrorResponse(new UnauthorizedException()));
+			} else
+			{
+				response = Mapper.Map<UserQueryDto>(currUser);
+			}
+			return response;
 		}
 	}
 }

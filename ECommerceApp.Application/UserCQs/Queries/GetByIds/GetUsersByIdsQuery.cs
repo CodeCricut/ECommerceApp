@@ -39,8 +39,17 @@ namespace ECommerceApp.Application.UserCQs.Queries.GetByIds
 		public override async Task<PaginatedList<UserQueryDto>> Handle(GetUsersByIdsQuery request, CancellationToken cancellationToken)
 		{
 			var users = await UnitOfWork.Users.GetEntitiesAsync();
-			var paginatedUsersByIds = await users.Where(u => request.Ids.Contains(u.Id)).ToPaginatedListAsync(request.PagingParams);
+			var paginatedUsersByIds = await users.Where(u => request.Ids.Contains(u.Id) && ! u.Deleted).ToPaginatedListAsync(request.PagingParams);
+
 			var paginatedUserQueryDtos = await paginatedUsersByIds.ToMappedPaginatedListAsync<User, UserQueryDto>(Mapper);
+			foreach (var response in paginatedUserQueryDtos.Items)
+			{
+				// TODO: this should probably be dealt with elsewhere.
+				response.Bought = null;
+				response.Saved = null;
+				response.ShoppingCartItems = null;
+			}
+
 			return paginatedUserQueryDtos;
 		}
 	}
