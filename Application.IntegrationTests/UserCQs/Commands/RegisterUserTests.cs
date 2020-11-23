@@ -91,7 +91,7 @@ namespace Application.IntegrationTests.UserCQs.Commands
 			// Assert
 			Assert.NotNull(createdUserModel);
 
-			var usernameTakenException = createdUserModel.Exceptions.FirstOrDefault(e => e is UsernameTakenException);
+			var usernameTakenException = createdUserModel.Errors.FirstOrDefault(e => e.GetType() == typeof(UsernameTakenException));
 			Assert.NotNull(usernameTakenException);
 		}
 	}

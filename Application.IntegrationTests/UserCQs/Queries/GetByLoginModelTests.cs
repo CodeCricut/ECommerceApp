@@ -50,7 +50,7 @@ namespace Application.IntegrationTests.UserCQs.Queries
 
 			// Assert
 			Assert.NotNull(authUserModel);
-			Assert.Empty(authUserModel.Exceptions);
+			Assert.Empty(authUserModel.Errors);
 
 			Assert.Equal(user.Bio, authUserModel.Bio);
 			Assert.Equal(user.Bought.Count(), authUserModel.Bought.Count());
@@ -94,7 +94,7 @@ namespace Application.IntegrationTests.UserCQs.Queries
 			// Assert
 			Assert.NotNull(authUserModel);
 
-			var unauthorizedException = authUserModel.Exceptions.FirstOrDefault(e => e is UnauthorizedException);
+			var unauthorizedException = authUserModel.Errors.FirstOrDefault(e => e.GetType() == typeof( UnauthorizedException));
 			Assert.NotNull(unauthorizedException);
 		}
 	}

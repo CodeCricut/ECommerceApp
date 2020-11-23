@@ -46,7 +46,7 @@ namespace Application.IntegrationTests.ProductListingCQs.Queries
 			Assert.NotNull(responseModel);
 
 			Assert.Equal(productListing.Id, responseModel.Id);
-			Assert.Empty(responseModel.Exceptions);
+			Assert.Empty(responseModel.Errors);
 		}
 
 		[Fact]
@@ -76,7 +76,7 @@ namespace Application.IntegrationTests.ProductListingCQs.Queries
 
 			Assert.NotEqual(productListing.Id, responseModel.Id);
 
-			var notFoundException = responseModel.Exceptions.FirstOrDefault(e => e is NotFoundException);
+			var notFoundException = responseModel.Errors.FirstOrDefault(e => e.GetType() == typeof(NotFoundException));
 			Assert.NotNull(notFoundException);
 		}
 	}

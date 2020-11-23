@@ -62,7 +62,7 @@ namespace Application.IntegrationTests.ProductDetailsCQs.Commands
 			using var scope = Factory.Services.CreateScope();
 			var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
 
-			Assert.Empty(pdReturnedModel.Exceptions);
+			Assert.Empty(pdReturnedModel.Errors);
 
 			// Should remove product details from the db.
 			var plRemovedEntity = await unitOfWork.ProductListings.GetEntityAsync(productDetails.Id);

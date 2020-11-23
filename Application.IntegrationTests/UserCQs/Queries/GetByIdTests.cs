@@ -47,7 +47,7 @@ namespace Application.IntegrationTests.UserCQs.Queries
 			Assert.Equal(user.Id, authUserModel.Id);
 
 			Assert.Empty(authUserModel.Bought);
-			Assert.Empty(authUserModel.Exceptions);
+			Assert.Empty(authUserModel.Errors);
 			Assert.Empty(authUserModel.Saved);
 			Assert.Empty(authUserModel.ShoppingCartItems);
 			Assert.Empty(authUserModel.Sold);
@@ -74,8 +74,7 @@ namespace Application.IntegrationTests.UserCQs.Queries
 			UserQueryDto authUserModel = await sut.Handle(new GetUserByIdQuery(-1), new System.Threading.CancellationToken());
 
 			// Assert
-			var notFoundException = authUserModel.Exceptions.FirstOrDefault(e => e is NotFoundException);
-			Assert.NotNull(notFoundException);
+			Assert.True(0 < authUserModel.Errors.Count());
 		}
 	}
 }

@@ -1,9 +1,10 @@
-﻿namespace ECommerceApp.Domain.Exceptions
+﻿using System;
+
+namespace ECommerceApp.Domain.Exceptions
 {
-	public class UnauthorizedException : ApiException
+	public class UnauthorizedException : Exception
 	{
-		public UnauthorizedException(string message = "Unauthorized to access the requested resource.",
-			object errorObject = null) : base(message, errorObject)
+		public UnauthorizedException(string message = "Unauthorized to access the requested resource.") : base(message)
 		{
 		}
 	}

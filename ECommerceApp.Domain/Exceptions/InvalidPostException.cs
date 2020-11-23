@@ -1,16 +1,12 @@
-﻿namespace ECommerceApp.Domain.Exceptions
+﻿using System;
+
+namespace ECommerceApp.Domain.Exceptions
 {
-	public class InvalidPostException : ApiException
+	public class InvalidPostException : Exception
 	{
 		private const string DEFAULT_MESSAGE = "Invalid post request.";
-		public InvalidPostException(string message = DEFAULT_MESSAGE,
-			object errorObject = null)
-			: base(message, errorObject)
-		{
-		}
-
-		public InvalidPostException(object errorObject = null)
-			: base(DEFAULT_MESSAGE, errorObject)
+		public InvalidPostException(string message = DEFAULT_MESSAGE)
+			: base(message)
 		{
 		}
 	}

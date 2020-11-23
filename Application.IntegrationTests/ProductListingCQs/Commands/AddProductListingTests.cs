@@ -55,7 +55,7 @@ namespace Application.IntegrationTests.ProductListingCQs.Commands
 
 			// Assert
 			Assert.NotNull(plAddedModel);
-			Assert.Empty(plAddedModel.Exceptions);
+			Assert.Empty(plAddedModel.Errors);
 
 			var plAddedEntity = await unitOfWork.ProductListings.GetEntityAsync(plAddedModel.Id);
 			Assert.NotNull(plAddedEntity);

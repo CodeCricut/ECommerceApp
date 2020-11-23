@@ -43,7 +43,7 @@ namespace Application.IntegrationTests.UserCQs.Queries
 			// Assert
 			Assert.NotNull(userResponse);
 			Assert.Equal(user.Id, userResponse.Id);
-			Assert.Empty(userResponse.Exceptions);
+			Assert.Empty(userResponse.Errors);
 		}
 
 		[Fact]
@@ -71,8 +71,10 @@ namespace Application.IntegrationTests.UserCQs.Queries
 			// Assert
 			Assert.NotNull(userResponse);
 
-			var notFoundException = userResponse.Exceptions.FirstOrDefault(e => e is NotFoundException);
-			Assert.NotNull(notFoundException);
+			//var notFoundException = userResponse.Errors.FirstOrDefault(e => e.Type == typeof(NotFoundException));
+			//Assert.NotNull(notFoundException);
+
+			Assert.True(0 < userResponse.Errors.Count());
 		}
 	}
 }

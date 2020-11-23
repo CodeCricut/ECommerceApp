@@ -53,7 +53,7 @@ namespace Application.IntegrationTests.ProductDetailsCQs.Commands
 
 			// Assert
 			Assert.NotNull(pdUpdatedModel);
-			Assert.Empty(pdUpdatedModel.Exceptions);
+			Assert.Empty(pdUpdatedModel.Errors);
 
 			var pdUpdatedEntity = await unitOfWork.ProductDetails.GetEntityAsync(pdUpdatedModel.Id);
 			Assert.NotNull(pdUpdatedEntity);

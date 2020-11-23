@@ -81,7 +81,7 @@ namespace Domain.UnitTests.Mapping
 			Assert.Equal(user.Id, userQueryDto.Id);
 			Assert.Equal(user.Username, userQueryDto.Username);
 
-			Assert.Empty(userQueryDto.Exceptions);
+			Assert.Empty(userQueryDto.Errors);
 
 			// TODO : add more robust tests for complex properties
 			Assert.NotNull(userQueryDto.Bought);

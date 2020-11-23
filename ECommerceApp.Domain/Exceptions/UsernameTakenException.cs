@@ -1,8 +1,10 @@
-﻿namespace ECommerceApp.Domain.Exceptions
+﻿using System;
+
+namespace ECommerceApp.Domain.Exceptions
 {
-	public class UsernameTakenException : ApiException
+	public class UsernameTakenException : Exception
 	{
-		public UsernameTakenException(string message = "Username taken.", object errorObject = null) : base(message, errorObject)
+		public UsernameTakenException(string message = "Username taken.") : base(message)
 		{
 		}
 	}

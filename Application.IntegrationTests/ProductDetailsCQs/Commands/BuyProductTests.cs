@@ -60,7 +60,7 @@ namespace Application.IntegrationTests.ProductDetailsCQs.Commands
 
 			// Should return details query dto.
 			Assert.NotNull(pdAddedModel);
-			Assert.Empty(pdAddedModel.Exceptions);
+			Assert.Empty(pdAddedModel.Errors);
 
 			// Should create new product details and add it to the db.
 			var plAddedEntity = await unitOfWork.ProductListings.GetEntityAsync(pdAddedModel.Id);
