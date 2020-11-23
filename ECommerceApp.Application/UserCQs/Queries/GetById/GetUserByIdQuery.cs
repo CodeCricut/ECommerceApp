@@ -1,10 +1,13 @@
 ﻿using AutoMapper;
 using ECommerceApp.Application.Common.Interfaces;
 using ECommerceApp.Application.Common.Requests;
+using ECommerceApp.Domain.Exceptions;
 using ECommerceApp.Domain.Interfaces;
 using ECommerceApp.Domain.Models;
 using MediatR;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -29,9 +32,23 @@ namespace ECommerceApp.Application.UserCQs.Queries.GetById
 		{
 		}
 
-		public override Task<UserQueryDto> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
+		public override async Task<UserQueryDto> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
 		{
-			throw new NotImplementedException();
+			var user = await UnitOfWork.Users.GetEntityAsync(request.Id);
+
+			UserQueryDto response = new UserQueryDto();
+			if (user == null)
+			{
+				response.Errors = new List<ErrorResponse>
+				{
+					new ErrorResponse(new NotFoundException())
+				};
+			} else
+			{
+				response = Mapper.Map<UserQueryDto>(user);
+			}
+
+			return response;
 		}
 	}
 }
