@@ -67,10 +67,9 @@ namespace Application.IntegrationTests.UserCQs.Queries
 			var authUserModel = await sut.Handle(new GetAuthenticatedUserQuery(), new System.Threading.CancellationToken());
 
 			// Assert
-			var unauthorizedException = authUserModel.Errors.FirstOrDefault(e => e.GetType() == typeof(UnauthorizedException));
-			Assert.NotNull(unauthorizedException);
+			Assert.True(0 < authUserModel.Errors.Count());
+
 			Assert.True(authUserModel.Id <= 0);
-			Assert.Equal(string.Empty, authUserModel.Username);
 		}
 	}
 }

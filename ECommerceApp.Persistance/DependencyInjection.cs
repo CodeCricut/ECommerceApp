@@ -14,10 +14,10 @@ namespace ECommerceApp.Persistance
 			if (configuration.GetValue<bool>("UseInMemoryDatabase"))
 			{
 				// In order to run tests in parallel without issues, DB name must be unique.
-				var inMemoryDbName = $"ECommerceDbMemory.{Guid.NewGuid()}";
+				var inMemoryDbName = $"ECommerceDbMemory{Guid.NewGuid()}";
 
 				services.AddDbContext<DbContext, ECommerceContext>(options =>
-					options.UseInMemoryDatabase(inMemoryDbName)); ;
+					options.UseInMemoryDatabase(inMemoryDbName));
 			}
 			else
 			{

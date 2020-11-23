@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace Application.IntegrationTests.Common
@@ -14,16 +15,14 @@ namespace Application.IntegrationTests.Common
 	{
 		protected override void ConfigureWebHost(IWebHostBuilder builder)
 		{
-			var projectDir = Directory.GetCurrentDirectory();
-			var configPath = Path.Combine(projectDir, "appsettings.json");
-
-			builder.ConfigureAppConfiguration(config =>
+			builder.ConfigureAppConfiguration((context, configuration) =>
 			{
-				var integrationConfig = new ConfigurationBuilder()
-					.AddJsonFile(configPath)
-					.Build();
-
-				config.AddConfiguration(integrationConfig);
+				configuration.AddInMemoryCollection(
+							new Dictionary<string, string>
+							{
+								["UseInMemoryDatabase"] = "true",
+								// ["ConnectionStrings:ECommerce"] = "etskljldksjf"
+							});
 			});
 
 			builder.ConfigureServices(services =>
