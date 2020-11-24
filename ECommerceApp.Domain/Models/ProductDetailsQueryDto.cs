@@ -20,6 +20,8 @@ namespace ECommerceApp.Domain.Models
 		public DateTime BoughtAt { get; set; }
 		public int QuantityBought { get; set; }
 
+		public int ProductListingId { get; set; }
+
 		public void Mapping(Profile profile)
 		{
 			profile.CreateMap<ProductDetails, ProductDetailsQueryDto>();

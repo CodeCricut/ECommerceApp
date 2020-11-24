@@ -53,7 +53,7 @@ namespace Application.IntegrationTests.ProductDetailsCQs.Commands
 			var sut = new ReturnProductHandler(unitOfWork, mediator, mapper, currentUserServiceMock.Object);
 
 			// Act
-			pdReturnedModel = sut.Handle(new ReturnProductCommand(returnCommand), new System.Threading.CancellationToken()).Result;
+			pdReturnedModel = sut.Handle(new ReturnProductCommand(productDetails.Id, returnCommand), new System.Threading.CancellationToken()).Result;
 		}
 
 		[Fact]
@@ -65,7 +65,7 @@ namespace Application.IntegrationTests.ProductDetailsCQs.Commands
 			Assert.Empty(pdReturnedModel.Errors);
 
 			// Should remove product details from the db.
-			var plRemovedEntity = await unitOfWork.ProductListings.GetEntityAsync(productDetails.Id);
+			var plRemovedEntity = await unitOfWork.ProductDetails.GetEntityAsync(productDetails.Id);
 			Assert.Null(plRemovedEntity);
 		}
 

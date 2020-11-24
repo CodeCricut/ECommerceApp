@@ -31,11 +31,11 @@ namespace ECommerceApp.Api.Controllers
 			return Ok(await Mediator.Send(new ModifyProductDetailsCommand(key, modifyCommand)));
 		}
 
-		[HttpPost("return")]
+		[HttpPost("return/{key:int}")]
 		[JwtAuthorize]
-		public async Task<ActionResult<ProductDetailsQueryDto>> ReturnProductAsync([FromBody] ProductDetailsCommandDto returnCommand)
+		public async Task<ActionResult<ProductDetailsQueryDto>> ReturnProductAsync([FromRoute] int key, [FromBody] ProductDetailsCommandDto returnCommand)
 		{
-			return Ok(await Mediator.Send(new ReturnProductCommand(returnCommand)));
+			return Ok(await Mediator.Send(new ReturnProductCommand(key, returnCommand)));
 		}
 		#endregion
 

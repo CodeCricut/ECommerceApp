@@ -55,6 +55,7 @@ namespace ECommerceApp.Application.ProductDetailsCQs.Commands.BuyProduct
 				// should create new product details and add it to the db
 				var productDetails = new ProductDetails
 				{
+					ProductListingId = productListing.Id,
 					BoughtAt = DateTime.Now,
 					Brand = productListing.Brand,
 					Description = productListing.Description,

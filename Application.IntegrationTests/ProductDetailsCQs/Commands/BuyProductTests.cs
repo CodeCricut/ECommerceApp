@@ -65,6 +65,8 @@ namespace Application.IntegrationTests.ProductDetailsCQs.Commands
 			// Should create new product details and add it to the db.
 			var plAddedEntity = await unitOfWork.ProductDetails.GetEntityAsync(pdAddedModel.Id);
 			Assert.NotNull(plAddedEntity);
+
+			Assert.Equal(plAddedEntity.ProductListingId, productListing.Id);
 		}
 
 		[Fact]

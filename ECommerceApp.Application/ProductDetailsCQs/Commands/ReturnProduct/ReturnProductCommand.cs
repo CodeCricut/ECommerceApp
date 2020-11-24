@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ECommerceApp.Application.Common.Interfaces;
 using ECommerceApp.Application.Common.Requests;
+using ECommerceApp.Domain.Exceptions;
 using ECommerceApp.Domain.Interfaces;
 using ECommerceApp.Domain.Models;
 using MediatR;
@@ -12,11 +13,13 @@ namespace ECommerceApp.Application.ProductDetailsCQs.Commands.ReturnProduct
 {
 	public class ReturnProductCommand : IRequest<ProductDetailsQueryDto>
 	{
-		public ReturnProductCommand(ProductDetailsCommandDto returnCommand)
+		public ReturnProductCommand(int productDetailsId, ProductDetailsCommandDto returnCommand)
 		{
+			ProductDetailsId = productDetailsId;
 			ReturnCommand = returnCommand;
 		}
 
+		public int ProductDetailsId { get; }
 		public ProductDetailsCommandDto ReturnCommand { get; }
 	}
 
@@ -28,9 +31,43 @@ namespace ECommerceApp.Application.ProductDetailsCQs.Commands.ReturnProduct
 		{
 		}
 
-		public override Task<ProductDetailsQueryDto> Handle(ReturnProductCommand request, CancellationToken cancellationToken)
+		public override async Task<ProductDetailsQueryDto> Handle(ReturnProductCommand request, CancellationToken cancellationToken)
 		{
-			throw new NotImplementedException();
+			var user = await UnitOfWork.Users.GetEntityAsync(CurrentUserService.UserId);
+			var productDetails = await UnitOfWork.ProductDetails.GetEntityAsync(request.ProductDetailsId);
+			var productListing = await UnitOfWork.ProductListings.GetEntityAsync(request.ReturnCommand.ProductListingId);
+
+			var response = new ProductDetailsQueryDto();
+
+			if (user == null)
+			{
+				response.Errors.Add(new ErrorResponse(new UnauthorizedException()));
+			}
+			else if (productDetails == null)
+			{
+				response.Errors.Add(new ErrorResponse(new NotFoundException()));
+			}
+			else
+			{
+				// should increment the product listing number
+				productListing.QuantityAvailable ++;
+				if (productListing.QuantityAvailable >= 0) productListing.Available = true;
+
+				// should remove product details from the db
+
+				var successful = await UnitOfWork.ProductDetails.DeleteEntityAsync(productDetails.Id);
+
+				if (!successful)
+				{
+					response.Errors.Add(new ErrorResponse(new InvalidPostException()));
+				} else
+				{
+					UnitOfWork.SaveChanges();
+					response = Mapper.Map<ProductDetailsQueryDto>(productDetails);
+				}
+			}
+
+			return response;
 		}
 	}
 }

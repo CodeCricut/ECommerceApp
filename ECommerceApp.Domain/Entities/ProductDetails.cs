@@ -5,6 +5,9 @@ namespace ECommerceApp.Domain.Entities
 {
 	public class ProductDetails : DomainEntity
 	{
+		public int ProductListingId { get; set; }
+		public ProductListing ProductListing { get; set; }
+
 		public string HumanReadableId { get; set; }
 		public string Name { get; set; }
 		public string Description { get; set; }

@@ -80,6 +80,9 @@ namespace ECommerceApp.Persistance.Migrations
                     b.Property<decimal>("PricePerUnit")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<int>("ProductListingId")
+                        .HasColumnType("int");
+
                     b.Property<int>("QuantityBought")
                         .HasColumnType("int");
 
@@ -90,6 +93,8 @@ namespace ECommerceApp.Persistance.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProductListingId");
 
                     b.HasIndex("SellerId");
 
@@ -111,6 +116,9 @@ namespace ECommerceApp.Persistance.Migrations
                     b.Property<string>("Brand")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -202,6 +210,12 @@ namespace ECommerceApp.Persistance.Migrations
 
             modelBuilder.Entity("ECommerceApp.Domain.Entities.ProductDetails", b =>
                 {
+                    b.HasOne("ECommerceApp.Domain.Entities.ProductListing", "ProductListing")
+                        .WithMany()
+                        .HasForeignKey("ProductListingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("ECommerceApp.Domain.Entities.User", "Seller")
                         .WithMany("Sold")
                         .HasForeignKey("SellerId")

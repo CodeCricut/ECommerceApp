@@ -30,7 +30,6 @@ namespace Domain.UnitTests.Mapping
 			{
 				Brand = "test brand",
 				Description = "test description",
-				HumanReadableId = "test hr id",
 				Name = "test name",
 				PricePerUnit = 4.20M
 			};
@@ -41,7 +40,6 @@ namespace Domain.UnitTests.Mapping
 			// Assert
 			Assert.Equal(detailsCommandDto.Brand, productDetails.Brand);
 			Assert.Equal(detailsCommandDto.Description, productDetails.Description);
-			Assert.Equal(detailsCommandDto.HumanReadableId, productDetails.HumanReadableId);
 			Assert.Equal(detailsCommandDto.Name, productDetails.Name);
 			Assert.Equal(detailsCommandDto.PricePerUnit, productDetails.PricePerUnit);
 
