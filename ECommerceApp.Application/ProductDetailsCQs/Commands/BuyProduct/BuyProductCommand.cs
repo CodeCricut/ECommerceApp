@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using ECommerceApp.Application.Common.Interfaces;
 using ECommerceApp.Application.Common.Requests;
+using ECommerceApp.Domain.Entities;
+using ECommerceApp.Domain.Exceptions;
 using ECommerceApp.Domain.Interfaces;
 using ECommerceApp.Domain.Models;
 using MediatR;
@@ -14,10 +16,10 @@ namespace ECommerceApp.Application.ProductDetailsCQs.Commands.BuyProduct
 	{
 		public BuyProductCommand(ProductDetailsCommandDto model)
 		{
-			Model = model;
+			ProductDetailsModel = model;
 		}
 
-		public ProductDetailsCommandDto Model { get; }
+		public ProductDetailsCommandDto ProductDetailsModel { get; }
 	}
 
 	public class BuyProductHandler : DatabaseRequestHandler<
@@ -28,13 +30,51 @@ namespace ECommerceApp.Application.ProductDetailsCQs.Commands.BuyProduct
 		{
 		}
 
-		public override Task<ProductDetailsQueryDto> Handle(BuyProductCommand request, CancellationToken cancellationToken)
+		public override async Task<ProductDetailsQueryDto> Handle(BuyProductCommand request, CancellationToken cancellationToken)
 		{
-			// TODO:
-			// should decrement the product listing number
-			// should create new product details and add it to the db
-			// should return details query dto
-			throw new NotImplementedException();
+			var user = await UnitOfWork.Users.GetEntityAsync(CurrentUserService.UserId);
+			var productListing = await UnitOfWork.ProductListings.GetEntityAsync(request.ProductDetailsModel.ProductListingId);
+
+			var response = new ProductDetailsQueryDto();
+
+			if (user == null)
+			{
+				response.Errors.Add(new ErrorResponse(new UnauthorizedException()));
+			} else if (productListing == null)
+			{
+				response.Errors.Add(new ErrorResponse(new NotFoundException()));
+			} else if (! productListing.Available || productListing.QuantityAvailable <= 0)
+			{
+				response.Errors.Add(new ErrorResponse(new ProductUnavailableException()));
+			} else
+			{
+				// should decrement the product listing number
+				productListing.QuantityAvailable--;
+				if (productListing.QuantityAvailable <= 0) productListing.Available = false;
+
+				// should create new product details and add it to the db
+				var productDetails = new ProductDetails
+				{
+					BoughtAt = DateTime.Now,
+					Brand = productListing.Brand,
+					Description = productListing.Description,
+					HumanReadableId = productListing.HumanReadableId,
+					ListedAt = productListing.ListedAt,
+					Name = productListing.Name,
+					PricePerUnit = productListing.Price,
+					QuantityBought = request.ProductDetailsModel.QuantityBought,
+					SellerId = productListing.SellerId,
+					UserId = user.Id
+				};
+
+				var addedEntity = await UnitOfWork.ProductDetails.AddEntityAsync(productDetails);
+				UnitOfWork.SaveChanges();
+
+				// should return details query dto
+				response = Mapper.Map<ProductDetailsQueryDto>(addedEntity);
+			}
+
+			return response;
 		}
 	}
 }

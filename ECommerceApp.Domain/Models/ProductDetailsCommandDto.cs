@@ -10,13 +10,13 @@ namespace ECommerceApp.Domain.Models
 	{
 		// For buying a product.
 		public int ProductListingId { get; set; }
+		public int QuantityBought { get; set; }
 
 		// For updating details.
 		public string Name { get; set; }
 		public string Description { get; set; }
 		public string Brand { get; set; }
 
-		public string HumanReadableId { get; set; }
 		public decimal PricePerUnit { get; set; }
 
 		public void Mapping(Profile profile)
