@@ -49,7 +49,7 @@ namespace ECommerceApp.Application.ProductDetailsCQs.Commands.BuyProduct
 			} else
 			{
 				// should decrement the product listing number
-				productListing.QuantityAvailable--;
+				productListing.QuantityAvailable -= request.ProductDetailsModel.QuantityBought;
 				if (productListing.QuantityAvailable <= 0) productListing.Available = false;
 
 				// should create new product details and add it to the db

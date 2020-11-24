@@ -50,7 +50,7 @@ namespace ECommerceApp.Application.ProductDetailsCQs.Commands.ReturnProduct
 			else
 			{
 				// should increment the product listing number
-				productListing.QuantityAvailable ++;
+				productListing.QuantityAvailable += request.ReturnCommand.QuantityBought;
 				if (productListing.QuantityAvailable >= 0) productListing.Available = true;
 
 				// should remove product details from the db
