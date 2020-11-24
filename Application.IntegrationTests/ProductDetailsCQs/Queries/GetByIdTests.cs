@@ -70,7 +70,7 @@ namespace Application.IntegrationTests.ProductDetailsCQs.Queries
 			var sut = new GetProductDetailsByIdHandler(unitOfWork, mediator, mapper, currentUserServiceMock.Object);
 
 			// Act
-			ProductDetailsQueryDto responseModel = await sut.Handle(new GetProductDetailsByIdQuery(productDetails.Id), new System.Threading.CancellationToken());
+			ProductDetailsQueryDto responseModel = await sut.Handle(new GetProductDetailsByIdQuery(-1), new System.Threading.CancellationToken());
 
 			// Assert
 			Assert.NotNull(responseModel);
