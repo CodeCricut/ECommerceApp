@@ -73,7 +73,7 @@ namespace Application.IntegrationTests.ProductDetailsCQs.Queries
 
 			var sut = new GetProductDetailsByIdsHandler(unitOfWork, mediator, mapper, currentUserServiceMock.Object);
 
-			var query = new GetProductDetailsByIdsQuery(new List<int> { productDetails.Id }, new PagingParams(1, 10));
+			var query = new GetProductDetailsByIdsQuery(new List<int> { -1}, new PagingParams(1, 10));
 
 			// Act
 			PaginatedList<ProductDetailsQueryDto> paginatedReponse = await sut.Handle(query, new System.Threading.CancellationToken());
